@@ -11,16 +11,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    productFlavors {
-        pf1 {
-
-        }
-        pf2 {
-
-        }
-    }
     buildTypes {
-        bar {
+        other {
 
         }
         release {
@@ -39,12 +31,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-
-
-android.productFlavors.all { productFlavor ->
-    afterEvaluate {
-        def productFlavorName = productFlavor.name.capitalize()
-        String uninstallTaskName = "uninstall${productFlavorName}Bar"
-        def uninstallTask = project.tasks.getByName(uninstallTaskName)
-    }
-}
+String uninstallTaskName = "uninstallOther"
+project.tasks.getByName(uninstallTaskName)
