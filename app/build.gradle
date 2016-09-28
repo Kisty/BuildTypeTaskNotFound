@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+    defaultConfig {
+        applicationId "uk.co.imagitech.tasknotfound"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    productFlavors {
+        pf1 {
+
+        }
+        pf2 {
+
+        }
+    }
+    buildTypes {
+        bar {
+
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    testCompile 'junit:junit:4.12'
+}
+
+
+
+android.productFlavors.all { productFlavor ->
+    afterEvaluate {
+        def productFlavorName = productFlavor.name.capitalize()
+        String uninstallTaskName = "uninstall${productFlavorName}Bar"
+        def uninstallTask = project.tasks.getByName(uninstallTaskName)
+    }
+}
