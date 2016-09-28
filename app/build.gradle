@@ -31,5 +31,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-String uninstallTaskName = "uninstallOther"
-project.tasks.getByName(uninstallTaskName)
+afterEvaluate {
+    String uninstallTaskName = "uninstallOther"
+    project.tasks.getByName(uninstallTaskName)
+}
